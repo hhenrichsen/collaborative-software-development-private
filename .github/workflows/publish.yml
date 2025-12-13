@@ -13,6 +13,8 @@ jobs:
           bun-version: 1.0.0
       - run: bun install --frozen-lockfile
       - run: bun run build
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
       - run: bun run deploy
         env:
           REPO_NAME: ${{ github.event.repository.name }}
