@@ -7,9 +7,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Checkout fonts
+        uses: actions/checkout@v3
         with:
-          submodules: recursive
+          repository: hhenrichsen/fonts
+          token: ${{ secrets.FONTS_PAT }}
+          path: fonts
+
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.0.0
