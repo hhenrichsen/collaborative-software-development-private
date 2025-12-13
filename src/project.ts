@@ -1,4 +1,5 @@
 import { makeProject } from "@motion-canvas/core";
+import "./global.css";
 
 import title from "./scenes/00_title?scene";
 import git from "./scenes/02_git?scene";
