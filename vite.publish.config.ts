@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 
-defineConfig({
-  base: process.env.REPO_NAME ? `/${process.env.REPO_NAME}/` : "/",
+const repoName = process.env.REPO_NAME;
+export default defineConfig({
+  base: repoName ? `/${repoName}/` : "/",
   build: {
     rollupOptions: {
       input: "index.html",
