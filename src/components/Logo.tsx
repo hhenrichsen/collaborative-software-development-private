@@ -66,7 +66,7 @@ export class Logo extends Layout {
               fill="white"
             ></Line>
             <Img
-              src={"/HunterLogoUpperNoGlow.svg"}
+              src={`${import.meta.env.BASE_URL}HunterLogoUpperNoGlow.svg`}
               scale={0.8}
               position={[-32, -53]}
               compositeOperation={"source-in"}
@@ -87,7 +87,7 @@ export class Logo extends Layout {
                 fill="white"
               ></Line>
               <Img
-                src={"/HunterLogoUpperNoGlow.svg"}
+                src={`${import.meta.env.BASE_URL}HunterLogoUpperNoGlow.svg`}
                 position={[-32, -53]}
                 scale={0.8}
                 opacity={1}
@@ -97,7 +97,7 @@ export class Logo extends Layout {
           </Layout>
           <Img
             ref={this.lowerRef}
-            src={"/HunterLogoLower.svg"}
+            src={`${import.meta.env.BASE_URL}HunterLogoLower.svg`}
             position={[34, 53]}
           ></Img>
         </Layout>
