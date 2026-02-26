@@ -32,7 +32,7 @@ export default makeScene2D(function* (view) {
         <Scanlines rowSize={0.5} reflectionOffset={5}>
           <Scrollable
             ref={graphScrollable}
-            width={1800}
+            width={'100%'}
             height={700}
             y={-120}
             activeOpacity={0}
@@ -117,7 +117,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':tada: Initial commit'" }
   );
-  yield* graph().addCommit("main");
+  yield* graph().addCommit("main", { emoji: "🎉" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* typeCmd(
@@ -126,7 +126,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Add README'" }
   );
-  yield* graph().addCommit("main");
+  yield* graph().addCommit("main", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* beginSlide("develop-branch");
@@ -146,7 +146,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Add project structure'" }
   );
-  yield* graph().addCommit("develop");
+  yield* graph().addCommit("develop", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* beginSlide("feature-branch");
@@ -171,7 +171,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Add login form'" }
   );
-  yield* graph().addCommit("feature/add-login");
+  yield* graph().addCommit("feature/add-login", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* typeCmd(
@@ -180,7 +180,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Add auth logic'" }
   );
-  yield* graph().addCommit("feature/add-login");
+  yield* graph().addCommit("feature/add-login", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* beginSlide("feature-merge");
@@ -219,7 +219,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Add settings page'" }
   );
-  yield* graph().addCommit("feature/add-settings");
+  yield* graph().addCommit("feature/add-settings", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* beginSlide("merge-feature2");
@@ -276,7 +276,7 @@ export default makeScene2D(function* (view) {
     { fill: Colors.Catppuccin.Mocha.Overlay0, text: " -m " },
     { fill: Colors.Catppuccin.Mocha.Yellow, text: "':sparkles: Start v2 work'" }
   );
-  yield* graph().addCommit("develop");
+  yield* graph().addCommit("develop", { emoji: "✨" });
   yield* graphScrollable().scrollTo(graph().parent().cacheBBox().center, 1.0);
 
   yield* waitFor(1);
