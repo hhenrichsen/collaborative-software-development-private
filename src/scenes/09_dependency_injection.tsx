@@ -459,7 +459,60 @@ class TodoController {
     yield* playbackWait(1);
   }
 
+  yield* beginSlide("testing-intro");
+  yield* benefits().close(view, 1);
+  yield code().selection(lines(0, Infinity), 1);
+
+  yield* scrollable().zoom(1.25, 1);
+  yield* scrollable().scrollToBottomCenter(1);
+
+  yield* beginSlide("mock-model");
+  yield* code().code.append(
+    `
+class MockTodoModel implements TodoModel {
+  private mockTodos: Todo[] = [
+    { id: 0, title: "Test Todo", done: false },
+  ];
+
+  getTodoById(id: number): Todo | undefined {
+    return this.mockTodos[id];
+  }
+
+  getTodos(): Todo[] {
+    return this.mockTodos;
+  }
+
+  createTodo(todo: Partial<Todo>): Todo {
+    const newTodo = { done: false, ...todo, id: this.mockTodos.length };
+    this.mockTodos.push(newTodo);
+    return newTodo;
+  }
+}`,
+    1
+  );
+  yield* scrollable().scrollToBottomCenter(1);
+
+  yield* beginSlide("test-function");
+  yield* scrollable().scrollDown(120, 1);
+  yield* code().code.append(
+    `
+
+function testGetMany() {
+  const model = new MockTodoModel();
+  const controller = new TodoController(model);
+  const response = controller.getMany();
+  const body = JSON.parse(response.body);
+  assert(response.status === 200);
+  assert(body.length === 1);
+  assert(body[0].title === "Test Todo");
+}`,
+    1
+  );
+  yield* scrollable().scrollToBottomCenter(1);
+
+  yield* beginSlide("highlight-injection");
+  yield* code().selection(code().findLastRange(/const controller = new TodoController\(model\);/g), 1);
+
   yield* beginSlide("end");
-  yield benefits().close(view, 1);
   yield* window().close(view, 1);
 });
