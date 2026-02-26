@@ -274,6 +274,7 @@ export default makeScene2D(function* (view) {
     "Add todo list endpoint",
   ];
   for (const name of featureNames) {
+    yield* beginSlide(`commit-${name}`);
     yield* typeAndHitEnter([
       { fill: Colors.Catppuccin.Mocha.Green, text: "git " },
       "commit",
@@ -283,7 +284,6 @@ export default makeScene2D(function* (view) {
         text: `':sparkles: ${name}'`,
       },
     ]);
-    yield* beginSlide(`commit-${name}`);
     yield* addNewCommit("✨", commitCircles);
     yield* waitFor(1);
   }
@@ -372,6 +372,8 @@ export default makeScene2D(function* (view) {
     "checkout main",
   ]);
   yield* headBranch(0, 1);
+
+  yield* beginSlide("main commit");
   yield* typeAndHitEnter([
     { fill: Colors.Catppuccin.Mocha.Green, text: "git " },
     "commit",
