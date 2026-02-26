@@ -265,7 +265,6 @@ export default makeScene2D(function* (view) {
       </Txt>
     </Circle>
   );
-  yield* waitFor(2);
 
   yield* beginSlide("more-commits");
   const featureNames = [
@@ -351,8 +350,6 @@ export default makeScene2D(function* (view) {
   );
   yield* headBranch(1, 1);
 
-  yield* waitFor(2);
-
   yield* beginSlide("more branch commits");
   yield* typeAndHitEnter([
     { fill: Colors.Catppuccin.Mocha.Green, text: "git " },
@@ -422,7 +419,6 @@ export default makeScene2D(function* (view) {
       return circle.x(circle.x() - 100, 1);
     })
   );
-  yield* waitFor(3);
 
   yield* beginSlide("end");
 

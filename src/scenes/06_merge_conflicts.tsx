@@ -433,11 +433,9 @@ export default app;
       waitFor(2)
     )
   );
-  yield* waitFor(10);
 
   yield* beginSlide("highlight conflicts");
   yield* codeB().selection([lines(1, 12), lines(24, 59)], 1);
-  yield* waitFor(10);
 
   yield* beginSlide("resolve conflicts");
 
@@ -471,8 +469,6 @@ export default app;
 `,
     1
   );
-
-  yield* waitFor(2);
 
   yield* beginSlide("end");
   yield* sequence(
