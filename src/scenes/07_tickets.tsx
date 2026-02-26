@@ -84,7 +84,7 @@ export default makeScene2D(function* (view) {
           ></CardStack>
         </Scanlines>
       </Glow>
-    </Page>
+    </Page>,
   );
 
   const window = createRef<Window>();
@@ -166,7 +166,7 @@ export default makeScene2D(function* (view) {
           {"\u2022"} Sticky note stuck to a whiteboard
         </Txt>
       </Layout>
-    </Windows98Window>
+    </Windows98Window>,
   );
   whatWindow().position(belowScreenPosition(view, whatWindow()).addY(100));
 
@@ -254,7 +254,7 @@ export default makeScene2D(function* (view) {
           your head
         </Txt>
       </Layout>
-    </Windows98Window>
+    </Windows98Window>,
   );
   window().position(belowScreenPosition(view, window()).addY(100));
 
@@ -269,18 +269,233 @@ export default makeScene2D(function* (view) {
     yield* playbackWait(1);
   }
 
+  yield* beginSlide("example-issue");
+  yield whatWindow().close(view, 1);
+  yield* window().close(view, 1);
+
+  const issueWindow = createRef<Window>();
+  const issueTxts = createRefArray<Layout>();
+
+  yield view.add(
+    <Windows98Window
+      title={"Example Issue"}
+      icon={"octicon:issue-opened-16"}
+      ref={issueWindow}
+      headerColor={() =>
+        new Gradient({
+          stops: [
+            {
+              color: new Color(Colors.Catppuccin.Mocha.Green)
+                .darken(1)
+                .saturate(0.2),
+              offset: 0,
+            },
+            { color: Colors.Catppuccin.Mocha.Green, offset: 0.5 },
+            { color: Colors.Catppuccin.Mocha.Green, offset: 1 },
+          ],
+          type: "linear",
+          from: { x: 0, y: 0 },
+          to: {
+            x: 1000,
+            y: 0,
+          },
+        })
+      }
+      bodyColor={Colors.Catppuccin.Mocha.Crust}
+      size={[1000, 650]}
+    >
+      <Layout layout padding={30} direction={"column"} gap={16} width={"100%"}>
+        <Layout ref={issueTxts} opacity={0} direction={"column"} gap={4}>
+          <Txt
+            fontFamily={"Addington CF"}
+            fontSize={40}
+            fill={Colors.Catppuccin.Mocha.Text}
+            fontWeight={700}
+          >
+            Add user login page
+          </Txt>
+          <Txt
+            fontFamily={"Greycliff CF"}
+            fontSize={20}
+            fill={Colors.Catppuccin.Mocha.Overlay1}
+          >
+            #42 opened by hhenrichsen
+          </Txt>
+        </Layout>
+        <Layout
+          ref={issueTxts}
+          opacity={0}
+          direction={"row"}
+          gap={8}
+          layout
+          alignItems={"center"}
+        >
+          <Rect
+            radius={12}
+            fill={Colors.Catppuccin.Mocha.Green}
+            padding={[4, 12]}
+            layout
+          >
+            <Txt
+              fontFamily={"Greycliff CF"}
+              fontSize={18}
+              fill={Colors.Catppuccin.Mocha.Crust}
+              fontWeight={600}
+            >
+              enhancement
+            </Txt>
+          </Rect>
+          <Rect
+            radius={12}
+            fill={Colors.Catppuccin.Mocha.Sky}
+            padding={[4, 12]}
+            layout
+          >
+            <Txt
+              fontFamily={"Greycliff CF"}
+              fontSize={18}
+              fill={Colors.Catppuccin.Mocha.Crust}
+              fontWeight={600}
+            >
+              frontend
+            </Txt>
+          </Rect>
+          <Rect width={20} />
+          <Txt
+            fontFamily={"Greycliff CF"}
+            fontSize={20}
+            fill={Colors.Catppuccin.Mocha.Overlay1}
+          >
+            Assigned to hhenrichsen
+          </Txt>
+        </Layout>
+        <Layout ref={issueTxts} opacity={0} width={"100%"} direction={"column"} gap={8}>
+            <Rect
+              width={"100%"}
+              height={2}
+              fill={Colors.Catppuccin.Mocha.Surface1}
+            />
+          <Layout direction={"column"} gap={8}>
+            <Txt
+              fontFamily={"Addington CF"}
+              fontSize={28}
+              fill={Colors.Catppuccin.Mocha.Text}
+              fontWeight={600}
+            >
+              Description
+            </Txt>
+            <Txt
+              fontFamily={"Greycliff CF"}
+              fontSize={24}
+              fill={Colors.Catppuccin.Mocha.Subtext1}
+              textWrap
+            >
+              As a user, I want to log in to the application so that I can
+              access my account and personalized content.
+            </Txt>
+          </Layout>
+        </Layout>
+        <Layout ref={issueTxts} opacity={0}>
+          <Layout direction={"column"} gap={8}>
+            <Txt
+              fontFamily={"Addington CF"}
+              fontSize={28}
+              fill={Colors.Catppuccin.Mocha.Text}
+              fontWeight={600}
+            >
+              Acceptance Criteria
+            </Txt>
+            <Layout direction={"row"} gap={8}>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Overlay1}
+              >
+                {"☐"}
+              </Txt>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Subtext1}
+              >
+                Login form with email and password fields
+              </Txt>
+            </Layout>
+            <Layout direction={"row"} gap={8}>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Overlay1}
+              >
+                {"☐"}
+              </Txt>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Subtext1}
+              >
+                Form validation with error messages
+              </Txt>
+            </Layout>
+            <Layout direction={"row"} gap={8}>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Overlay1}
+              >
+                {"☐"}
+              </Txt>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Subtext1}
+              >
+                Redirect to dashboard on success
+              </Txt>
+            </Layout>
+            <Layout direction={"row"} gap={8}>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Overlay1}
+              >
+                {"☐"}
+              </Txt>
+              <Txt
+                fontFamily={"Greycliff CF"}
+                fontSize={24}
+                fill={Colors.Catppuccin.Mocha.Subtext1}
+              >
+                "Forgot password" link
+              </Txt>
+            </Layout>
+          </Layout>
+        </Layout>
+      </Layout>
+    </Windows98Window>,
+  );
+
+  issueWindow().position(belowScreenPosition(view, issueWindow()).addY(100));
+  issueWindow().position([0, 0]);
+  yield* issueWindow().open(view, 1);
+
+  for (const item of issueTxts) {
+    yield* beginSlide(`issue-${issueTxts.indexOf(item)}`);
+    yield item.opacity(1, 1);
+    yield* playbackWait(1);
+  }
+
   yield* beginSlide("close window");
   const el = view
     .childrenAs<Layout>()[1]
     .childrenAs<Layout>()[0]
     .childrenAs<Layout>()[0]
     .childrenAs<Layout>();
-  yield whatWindow().close(view, 1);
-  yield window().close(view, 1);
+  yield issueWindow().close(view, 1);
   yield* all(
     ...el.map((stack) =>
-      sequence(0.25, ...stack.children().map((card) => card.opacity(0, 1)))
-    )
+      sequence(0.25, ...stack.children().map((card) => card.opacity(0, 1))),
+    ),
   );
 });
 
@@ -304,9 +519,9 @@ const CardStack = ({
                 .position()
                 .add(Vector2.fromDegrees(node.rotation() - 90).mul(80 * speed)),
               1,
-              linear
-            )
-          )
+              linear,
+            ),
+          ),
         );
       }}
     >
