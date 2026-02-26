@@ -21,6 +21,7 @@ import {
   Vector2Signal,
   all,
   clampRemap,
+  createComputed,
   createRef,
   createSignal,
   delay,
@@ -308,7 +309,7 @@ export class Scrollable extends Rect {
   }
 
   public *scrollTo(
-    offset: PossibleVector2,
+    offset: SignalValue<PossibleVector2>,
     duration: number,
     timingFunction?: TimingFunction,
     interpolationFunction?: InterpolationFunction<Vector2>
@@ -344,21 +345,23 @@ export class Scrollable extends Rect {
   ) {
     const xSign = signum(0.5 - x);
     const ySign = signum(0.5 - y);
-    const viewOffsetX =
-      xSign * (this.size().x / 2 - this.scrollPadding().x) * this.inverseZoom();
-    const viewOffsetY =
-      ySign * (this.size().y / 2 - this.scrollPadding().y) * this.inverseZoom();
+    const frozenX = this.scrollOffset().x;
+    const frozenY = this.scrollOffset().y;
+    const viewOffsetX = createComputed(() =>
+      xSign * (this.size().x / 2 - this.scrollPadding().x) * this.inverseZoom());
+    const viewOffsetY = createComputed(() =>
+      ySign * (this.size().y / 2 - this.scrollPadding().y) * this.inverseZoom());
     yield* this.scrollTo(
-      {
+      () => ({
         x:
           x != undefined
-            ? this.contentsBox().x + x * this.contentsBox().width + viewOffsetX
-            : this.scrollOffset().x,
+            ? this.contentsBox().x + x * this.contentsBox().width + viewOffsetX()
+            : frozenX,
         y:
           y != undefined
-            ? this.contentsBox().y + y * this.contentsBox().height + viewOffsetY
-            : this.scrollOffset().y,
-      },
+            ? this.contentsBox().y + y * this.contentsBox().height + viewOffsetY()
+            : frozenY,
+      }),
       duration,
       timingFunction,
       interpolationFunction

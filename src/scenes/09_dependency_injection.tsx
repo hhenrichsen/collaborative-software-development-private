@@ -14,6 +14,7 @@ import {
   Color,
   createRef,
   createRefArray,
+  delay,
   useLogger,
 } from "@motion-canvas/core";
 import { CatpuccinJavascript } from "../util/codehighlighter";
@@ -172,8 +173,10 @@ class TodoController {
     1
   );
 
-  yield* beginSlide("inject");
+  yield* beginSlide("highlight");
   yield* code().selection(lines(32, 35), 1);
+
+  yield* beginSlide("inject");
   yield* code().code(
     `interface Todo {
   id: number;
@@ -463,10 +466,8 @@ class TodoController {
   yield* benefits().close(view, 1);
   yield code().selection(lines(0, Infinity), 1);
 
-  yield* scrollable().zoom(1.25, 1);
-  yield* scrollable().scrollToBottomCenter(1);
-
-  yield* beginSlide("mock-model");
+  yield scrollable().zoom(1.25, 1);
+  yield scrollable().scrollToBottomCenter(1);
   yield* code().code.append(
     `
 class MockTodoModel implements TodoModel {
@@ -490,10 +491,9 @@ class MockTodoModel implements TodoModel {
 }`,
     1
   );
-  yield* scrollable().scrollToBottomCenter(1);
 
   yield* beginSlide("test-function");
-  yield* scrollable().scrollDown(120, 1);
+  yield scrollable().scrollToBottomCenter(1);
   yield* code().code.append(
     `
 
@@ -508,10 +508,9 @@ function testGetMany() {
 }`,
     1
   );
-  yield* scrollable().scrollToBottomCenter(1);
 
   yield* beginSlide("highlight-injection");
-  yield* code().selection(code().findLastRange(/const controller = new TodoController\(model\);/g), 1);
+  yield* code().selection(code().findLastRange(/const model = new MockTodoModel\(\);\n\s+const controller = new TodoController\(model\);/gm), 1);
 
   yield* beginSlide("end");
   yield* window().close(view, 1);
