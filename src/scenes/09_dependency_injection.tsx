@@ -32,7 +32,7 @@ export default makeScene2D(function* (view) {
   const scrollable = createRef<Scrollable>();
 
   yield* beginSlide("open");
-  view.add(
+  yield view.add(
     <Windows98Window
       title="Dependency Injection"
       width={1400}
@@ -410,7 +410,7 @@ class TodoController {
   const txts = createRefArray<Txt>();
 
   yield* beginSlide("benefits");
-  view.add(
+  yield view.add(
     <Windows98Window
       title="Benefits"
       width={600}

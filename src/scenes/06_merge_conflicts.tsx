@@ -37,7 +37,7 @@ export default makeScene2D(function* (view) {
   const scrollableB = createRef<Scrollable>();
   const scrollableC = createRef<Scrollable>();
 
-  view.add(
+  yield view.add(
     <>
       <Windows98Window
         ref={windowA}

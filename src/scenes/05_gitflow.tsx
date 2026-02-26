@@ -26,7 +26,7 @@ export default makeScene2D(function* (view) {
   const scrollable = createRef<Scrollable>();
   const graphScrollable = createRef<Scrollable>();
 
-  view.add(
+  yield view.add(
     <>
       <Glow copyOpacity={0.5}>
         <Scanlines rowSize={0.5} reflectionOffset={5}>

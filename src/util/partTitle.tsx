@@ -4,7 +4,7 @@ import { spawn, chain, waitFor } from "@motion-canvas/core";
 import { Scanlines } from "../components/Scanlines";
 
 export function* partTitle(view: View2D, title: string) {
-  view.add(
+  yield view.add(
     <Glow copyOpacity={0.5}>
       <Scanlines rowSize={0.5} reflectionOffset={0}>
         <Layout direction={"column"} layout alignItems={"center"} gap={4}>

@@ -319,7 +319,7 @@ export default makeScene2D(function* (view) {
     { diagram: requestFlowDiagram, x: 550, y: 250, title: "Request Flow",  scale: 1.5 },
   ];
 
-  view.add(
+  yield view.add(
     <Windows98Window
       title="Design Documentation"
       width={600}
@@ -371,7 +371,7 @@ export default makeScene2D(function* (view) {
     Colors.Catppuccin.Mocha.Green,
     Colors.Catppuccin.Mocha.Sky,
   ][colorIdx];
-    view.add(
+    yield view.add(
       <Windows98Window
         opacity={0}
         title={config.title}
