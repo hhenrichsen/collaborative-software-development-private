@@ -1,10 +1,4 @@
-import {
-  Colors,
-  Glow,
-  Scrollable,
-  Window,
-  Windows98Window,
-} from "@hhenrichsen/canvas-commons";
+import { Colors, Glow, Scrollable, Window, Windows98Window } from "../commons";
 import {
   Circle,
   CircleProps,

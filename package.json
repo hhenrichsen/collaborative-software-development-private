@@ -6,7 +6,12 @@
     "start": "vite",
     "serve": "vite",
     "build": "tsc && vite build",
-    "deploy": "vite -c vite.publish.config.ts build"
+    "typecheck": "tsc",
+    "build:mc": "vite build",
+    "build:html": "vite -c vite.publish.config.ts build",
+    "deploy": "bun run deploy:normal && bun run deploy:minimal",
+    "deploy:normal": "bun run build:mc && bun run build:html",
+    "deploy:minimal": "bun run build:mc && bun run build:html"
   },
   "dependencies": {
     "@hhenrichsen/canvas-commons": "^0.10.2",

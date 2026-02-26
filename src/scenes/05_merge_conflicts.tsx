@@ -4,7 +4,7 @@ import {
   Scrollable,
   Window,
   Windows98Window,
-} from "@hhenrichsen/canvas-commons";
+} from "../commons";
 import { Code, Gradient, Layout, lines, makeScene2D } from "@motion-canvas/2d";
 import {
   all,

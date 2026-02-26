@@ -1,7 +1,7 @@
 import { Reference, SignalValue, useScene } from "@motion-canvas/core";
 import { Splatters, makeSplatterData } from "./Splatter";
 import { Logo } from "./Logo";
-import { Colors } from "@hhenrichsen/canvas-commons";
+import { Colors } from "../commons";
 import { ComponentChildren, Layout, Node } from "@motion-canvas/2d";
 
 const splatterData = makeSplatterData(

@@ -1,4 +1,4 @@
-import { Colors, Glow } from "@hhenrichsen/canvas-commons";
+import { Colors, Glow } from "../commons";
 import {
   Circle,
   Icon,

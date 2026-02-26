@@ -1,4 +1,4 @@
-import { Glow, Colors } from "@hhenrichsen/canvas-commons";
+import { Glow, Colors } from "../commons";
 import { Layout, Rect, Txt, View2D } from "@motion-canvas/2d";
 import { spawn, chain, waitFor } from "@motion-canvas/core";
 import { Scanlines } from "../components/Scanlines";

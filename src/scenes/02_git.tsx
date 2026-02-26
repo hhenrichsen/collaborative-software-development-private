@@ -4,7 +4,7 @@ import {
   Glow,
   Windows98Window,
   Window,
-} from "@hhenrichsen/canvas-commons";
+} from "../commons";
 import {
   Circle,
   Code,

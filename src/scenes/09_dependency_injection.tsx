@@ -1,9 +1,4 @@
-import {
-  Colors,
-  Scrollable,
-  Window,
-  Windows98Window,
-} from "@hhenrichsen/canvas-commons";
+import { Colors, Scrollable, Window, Windows98Window } from "../commons";
 import {
   Code,
   Gradient,

@@ -1,9 +1,4 @@
-import {
-  Colors,
-  Glow,
-  Window,
-  Windows98Window,
-} from "@hhenrichsen/canvas-commons";
+import { Colors, Glow, Window, Windows98Window } from "../commons";
 import {
   Layout,
   makeScene2D,

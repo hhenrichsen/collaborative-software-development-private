@@ -1,4 +1,4 @@
-import { Colors } from "@hhenrichsen/canvas-commons";
+import { Colors } from "../commons";
 import {
   Circle,
   Img,

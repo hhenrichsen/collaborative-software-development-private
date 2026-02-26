@@ -1,4 +1,4 @@
-import { Colors } from "../commons";
+import { Colors } from "../";
 import {
   Layout,
   Rect,
@@ -14,13 +14,9 @@ import {
   SignalValue,
   SimpleSignal,
   TimingFunction,
-  createDeferredEffect,
-  createEffect,
   createSignal,
-  deepLerp,
   linear,
   unwrap,
-  useLogger,
 } from "@motion-canvas/core";
 
 export interface TerminalProps extends LayoutProps {
