@@ -1,4 +1,5 @@
 export * from './Body';
+export * from './Dithering';
 export * from './CodeLineNumbers';
 export * from './ErrorBox';
 export * from './FileTree';

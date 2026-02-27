@@ -9,10 +9,8 @@ uniform float maxBrightness;
 uniform float effectStrength;
 uniform float scanSpeed;
 uniform vec2 reflectionOffset;
-uniform int aberrationPx;
 
 float PI = radians(180.0);
-float aberrationStrengthStart = 1.0;
 
 void main() {
     vec2 size = vec2(textureSize(sourceTexture, 0));
@@ -41,5 +39,3 @@ void main() {
 
     outColor.rgb *= min(maxBrightness, baseBrightness + deltaBrightness);
 }
-
-

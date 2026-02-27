@@ -3,15 +3,18 @@ precision highp float;
 
 #include "@motion-canvas/core/shaders/common.glsl"
 
-uniform float radius;
+uniform vec2 redOffset;
+uniform vec2 greenOffset;
+uniform vec2 blueOffset;
 
 void main() {
-    vec4 inColor = texture(sourceTexture, sourceUV);
-    vec4 mip = texture(sourceTexture, sourceUV, log2(radius));
+    vec2 size = vec2(textureSize(sourceTexture, 0));
+    vec2 pxSize = 1.0 / size;
 
-    outColor = inColor;
+    float r = texture(sourceTexture, sourceUV + redOffset * pxSize).r;
+    float g = texture(sourceTexture, sourceUV + greenOffset * pxSize).g;
+    float b = texture(sourceTexture, sourceUV + blueOffset * pxSize).b;
+    float a = texture(sourceTexture, sourceUV).a;
 
-    outColor.rgb += radius * dFdx(mip.rgb) * vec3(2, 0, -2);
+    outColor = vec4(r, g, b, a);
 }
-
-

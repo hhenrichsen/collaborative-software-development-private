@@ -62,24 +62,19 @@ export class Scanlines extends Layout {
         left: offset.x,
       };
     });
-    this.shaders({
-      fragment: crt,
-      uniforms: {
-        rowSize:
-          this.rowSize() *
-          Math.max(1, useScene().getRealSize().x / useScene().getSize().x),
-        baseBrightness: this.baseBrightness,
-        maxBrightness: this.maxBrightness,
-        effectStrength: this.effectStrength,
-        scanSpeed: this.scanSpeed,
-        reflectionOffset: this.reflectionOffset().mul(
-          Math.max(1, useScene().getRealSize().x / useScene().getSize().x),
-        ),
-        aberrationPx: Math.max(
-          1,
-          useScene().getRealSize().x / useScene().getSize().x,
-        ),
-      },
+    this.shaders(() => {
+      const scale = Math.max(1, useScene().getRealSize().x / useScene().getSize().x);
+      return {
+        fragment: crt,
+        uniforms: {
+          rowSize: this.rowSize() * scale,
+          baseBrightness: this.baseBrightness(),
+          maxBrightness: this.maxBrightness(),
+          effectStrength: this.effectStrength(),
+          scanSpeed: this.scanSpeed(),
+          reflectionOffset: this.reflectionOffset().mul(scale),
+        },
+      };
     });
   }
 }

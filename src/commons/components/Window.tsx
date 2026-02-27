@@ -1,5 +1,6 @@
 import { Colors } from "../Colors";
 import { belowScreenPosition } from "../Util";
+import ditheringShader from './dithering.glsl?raw';
 import {
   Rect,
   Circle,
@@ -23,6 +24,7 @@ import {
 import {
   Color,
   ColorSignal,
+  createRef,
   PossibleColor,
   PossibleVector2,
   Reference,
@@ -130,6 +132,7 @@ export class Window extends Rect {
   public readonly scrollable: Reference<Scrollable>;
 
   public constructor(props: WindowProps) {
+    const headerRef = createRef<Rect>();
     super({
       size: 400,
       stroke: "white",
@@ -186,10 +189,11 @@ export class Window extends Rect {
       >
         {props.children}
         <Rect
+          clip
+          ref={headerRef}
           layout
           justifyContent={"space-between"}
           alignItems={"center"}
-          fill={this.headerColor}
           padding={10}
           height={50}
           stroke={
@@ -199,6 +203,20 @@ export class Window extends Rect {
           shadowColor={Colors.Tailwind.Slate["950"]}
           shadowOffset={2}
         >
+          {this.windowStyle === WindowStyle.Windows98 ? (
+            <Rect
+              layout={false}
+              cache
+              size={() => headerRef().size().add([4, 4])}
+              fill={this.headerColor}
+              shaders={{
+                fragment: ditheringShader,
+                uniforms: { levels: 16.0, strength: 0.5, pixelSize: 4.0 },
+              }}
+            />
+          ) : (
+            <Rect layout={false} size={() => headerRef().size()} fill={this.headerColor} />
+          )}
           <Rect layout direction={"row"} alignItems={"center"} gap={4}>
             <ShortCircuitIcon
               icon={this.icon}
