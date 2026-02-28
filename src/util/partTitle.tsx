@@ -22,7 +22,7 @@ export function* partTitle(view: View2D, title: string) {
                     waitFor(0.5),
                     node
                       .text(title, 1)
-                      .wait(4)
+                      .wait(1)
                       .back(1)
                       .do(() => node.remove())
                   )
@@ -41,9 +41,9 @@ export function* partTitle(view: View2D, title: string) {
             ref={(node) =>
               spawn(() =>
                 node
-                  .width(1000, 2)
-                  .wait(3)
-                  .back(2)
+                  .width(1000, 1)
+                  .wait(2)
+                  .back(1)
                   .do(() => node.remove())
               )
             }
@@ -53,5 +53,5 @@ export function* partTitle(view: View2D, title: string) {
     </Glow>
   );
 
-  yield* waitFor(7);
+  yield* waitFor(4);
 }
